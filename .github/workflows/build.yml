@@ -54,7 +54,7 @@ run-name: "RisingOS Build for ${{ inputs.BRAND }} ${{ inputs.CODENAME }} [${{ in
 
 jobs:
   check-limit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       staging: ${{ steps.get_role.outputs.is_staging_member }}
     steps:
