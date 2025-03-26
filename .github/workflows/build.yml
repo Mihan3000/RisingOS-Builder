@@ -54,7 +54,7 @@ run-name: "RisingOS Build for ${{ inputs.BRAND }} ${{ inputs.CODENAME }} [${{ in
 
 jobs:
   check-limit:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     outputs:
       staging: ${{ steps.get_role.outputs.is_staging_member }}
     steps:
@@ -66,9 +66,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.TEST }}
         run: |
-          OWNERS=$(gh api -H "Accept: application/vnd.github+json" /orgs/RisingOSS-devices/members?role=admin --jq '.[].login')
-          STAGING_MEMBERS=$(gh api -H "Accept: application/vnd.github+json" /orgs/RisingOS-staging/members --jq '.[].login')
-          DEVICES_MEMBERS=$(gh api -H "Accept: application/vnd.github+json" /orgs/RisingOSS-devices/members --jq '.[].login')
+          OWNERS=$(gh api -H "Accept: application/vnd.github+json" /orgs/RisingOSS-devices/members?role=admin --jq '.[].mihan3000')
+          STAGING_MEMBERS=$(gh api -H "Accept: application/vnd.github+json" /orgs/RisingOS-staging/members --jq '.[].mihan3000')
+          DEVICES_MEMBERS=$(gh api -H "Accept: application/vnd.github+json" /orgs/RisingOSS-devices/members --jq '.[].mihan3000')
 
           is_owner=$(echo "$OWNERS" | grep -q "${{ github.actor }}" && echo "true" || echo "false")
           is_staging_member=$(echo "$STAGING_MEMBERS" | grep -q "${{ github.actor }}" && echo "true" || echo "false")
